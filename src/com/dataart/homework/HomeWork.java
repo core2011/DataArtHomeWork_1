@@ -23,12 +23,12 @@ public class HomeWork {
 
 
         stringBuilder
-                .append("Task1: Result sum of numbers [" + task1Number + "] is: " + resultTask1)
-                .append("\nTask2: " + resultTask2)
-                .append("\nTask2_1: " + resultTask2_1)
-                .append("\nTask3: " + resultTask3)
-                .append("\nTask3_1: " + resultTask3_1)
-                .append("\nTask3_2: " + "")
+                .append("Task1: Result sum of numbers [" + task1Number + "] is: " + resultTask1+"\n")
+                .append("\nTask2: " + resultTask2+"\n")
+                .append("\nTask2_1: " + resultTask2_1+"\n")
+                .append("\nTask3: " + resultTask3+"\n")
+                .append("\nTask3_1: " + resultTask3_1+"\n")
+                .append("\nTask3_2: ")
 
         ;
         System.out.println(stringBuilder);
@@ -44,13 +44,13 @@ public class HomeWork {
 
 
         stringBuilder
-                .append(task3_2())
-                .append("\nTask4_1: " + task4_1(arrForTaksk4_1))
-                .append("\nTask4_2: Old array - " + Arrays.toString(arrForTaksk4_2) + " New array - " + task4_2(arrForTaksk4_2))
+                .append(task3_2()+"\n")
+                .append("\nTask4_1: " + task4_1(arrForTaksk4_1)+"\n")
+                .append("\nTask4_2: Old array - " + Arrays.toString(arrForTaksk4_2) + " New array - " + task4_2(arrForTaksk4_2)+"\n")
                 .append("\nTask4_3: Old array - " + Arrays.toString(arrForTaksk4_3) + " New array - "
-                        + task4_3(arrForTaksk4_3, low, high))
-                .append("\nTask5: Werb [" + strKeyTask5 + "] meets " + task5(strTask5, strKeyTask5) + " times")
-                .append("\nTask5_1: Werb [" + strKeyTask5 + "] meets in this positions " + task5_1(strTask5, strKeyTask5))
+                        + task4_3(arrForTaksk4_3, low, high)+"\n")
+                .append("\nTask5: Werb [" + strKeyTask5 + "] meets " + task5(strTask5, strKeyTask5) + " times"+"\n")
+                .append("\nTask5_1: Werb [" + strKeyTask5 + "] meets in this positions " + task5_1(strTask5, strKeyTask5)+"\n")
                 .append("\nTask5_2:")
         ;
 
@@ -61,9 +61,9 @@ public class HomeWork {
 
         stringBuilder
                 .append(task5_2())
-                .append("\nOptionTask1: " + optionTask1())
-                .append("\nOptionTask2: " + optionTask2(arrMeanTempOptionTask2))
-                .append("\nOptionTask3: " + optionTask3(10))
+                .append("\nOptionTask1: " + optionTask1()+"\n")
+                .append("\nOptionTask2: " + optionTask2(arrMeanTempOptionTask2)+"\n")
+                .append("\nOptionTask3: " + optionTask3(10)+"\n")
         ;
         System.out.println(stringBuilder);
     }
@@ -275,8 +275,9 @@ public class HomeWork {
         System.out.println("Enter the sentence in which you will search for the word");
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
-        System.out.println("Enter the word");
+        System.out.println("Enter word. Length must more one character. ");
         String key = sc.nextLine();
+        if (key.length()<=1) return "Word must more one character. Good luck next time.\n";
         return "Werb [" + key + "] meets in this positions " + task5_1(str, key);
     }
 

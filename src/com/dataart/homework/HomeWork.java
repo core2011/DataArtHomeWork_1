@@ -1,5 +1,6 @@
 package com.dataart.homework;
 
+import java.lang.ref.SoftReference;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -8,64 +9,77 @@ import static java.util.Arrays.*;
 
 public class HomeWork {
     public static void main(String[] args) {
-        StringBuilder stringBuilder = new StringBuilder();
         int task1Number = 5732;
         int resultTask1 = task1(task1Number);
+        System.out.println("Task1: Result sum of numbers [" + task1Number + "] is: " + resultTask1 + "\n");
+
 
         int[] arrTask2 = new int[100];
         StringBuilder resultTask2 = task2(arrTask2);
+        System.out.println("Task2: " + resultTask2 + "\n");
+
 
         StringBuilder resultTask2_1 = task2_1(new int[1 + new Random().nextInt(30)]);
+        System.out.println("Task2: " + resultTask2_1 + "\n");
+
 
         int[] arrTask3 = new int[]{2, 4, 8};
         double resultTask3 = task3(arrTask3);
+        System.out.println("Task3: " + resultTask3 + "\n");
+
+
         double resultTask3_1 = task3_1(arrTask3);
+        System.out.println("Task3_1: " + resultTask3_1 + "\n");
 
 
-        stringBuilder
-                .append("Task1: Result sum of numbers [" + task1Number + "] is: " + resultTask1+"\n")
-                .append("\nTask2: " + resultTask2+"\n")
-                .append("\nTask2_1: " + resultTask2_1+"\n")
-                .append("\nTask3: " + resultTask3+"\n")
-                .append("\nTask3_1: " + resultTask3_1+"\n")
-                .append("\nTask3_2: ")
+        System.out.println(task3_2() + "\n");
 
-        ;
-        System.out.println(stringBuilder);
-        stringBuilder.setLength(0);
+
         int[] arrForTaksk4_1 = generetaArr(4, 1000);
-        int[] arrForTaksk4_2 = generetaArr(5, 1000);
+        StringBuilder sbResultTask4_1 = task4_1(arrForTaksk4_1);
+        System.out.println("Task4_1: " + sbResultTask4_1 + "\n");
+
+
+        int[] arrForTaksk4_2 = generetaArr(6, 100);
+        System.out.print("Task4_2: Old array - " + Arrays.toString(arrForTaksk4_2));
+        StringBuilder sbResultTask4_2 = task4_2(arrForTaksk4_2);
+        System.out.println(" New array - " + sbResultTask4_2 + "\n");
+
+
         int[] arrForTaksk4_3 = generetaArr(10, 1000);
         int low = 0;
         int high = arrForTaksk4_3.length - 1;
+        System.out.print("Task4_3: Old array - " + Arrays.toString(arrForTaksk4_3));
+        StringBuilder sbResultTask4_3 = task4_3(arrForTaksk4_3, low, high);
+        System.out.println(" New array - " + sbResultTask4_3 + "\n");
+
+
         String strTask5 = "Java School allows you to try java programming language on practice. " +
                 "Java one of the most popular programming languages. I love Java!!!";
         String strKeyTask5 = "Java";
+        int resultTask5 = task5(strTask5, strKeyTask5);
+        System.out.println("Task5: Werb [" + strKeyTask5 + "] meets " + resultTask5 + " times" + "\n");
 
 
-        stringBuilder
-                .append(task3_2()+"\n")
-                .append("\nTask4_1: " + task4_1(arrForTaksk4_1)+"\n")
-                .append("\nTask4_2: Old array - " + Arrays.toString(arrForTaksk4_2) + " New array - " + task4_2(arrForTaksk4_2)+"\n")
-                .append("\nTask4_3: Old array - " + Arrays.toString(arrForTaksk4_3) + " New array - "
-                        + task4_3(arrForTaksk4_3, low, high)+"\n")
-                .append("\nTask5: Werb [" + strKeyTask5 + "] meets " + task5(strTask5, strKeyTask5) + " times"+"\n")
-                .append("\nTask5_1: Werb [" + strKeyTask5 + "] meets in this positions " + task5_1(strTask5, strKeyTask5)+"\n")
-                .append("\nTask5_2:")
-        ;
+        String strResultTask5_1 = task5_1(strTask5, strKeyTask5);
+        System.out.println("Task5_1: Werb [" + strKeyTask5 + "] meets in this positions " + strResultTask5_1 + "\n");
 
-        System.out.println(stringBuilder);
-        stringBuilder.setLength(0);
+
+        String strResultTask5_2 = task5_2();
+        System.out.println("Task5_2: " + strResultTask5_2 + "\n");
+
+
+        StringBuilder sbResultOptionTask1 = optionTask1();
+        System.out.println("OptionTask1: " + sbResultOptionTask1 + "\n");
+
 
         int[] arrMeanTempOptionTask2 = {-74, -2, 24, 56};
+        StringBuilder sbResultTask2 = optionTask2(arrMeanTempOptionTask2);
+        System.out.println("OptionTask2: " + sbResultTask2 + "\n");
 
-        stringBuilder
-                .append(task5_2())
-                .append("\nOptionTask1: " + optionTask1()+"\n")
-                .append("\nOptionTask2: " + optionTask2(arrMeanTempOptionTask2)+"\n")
-                .append("\nOptionTask3: " + optionTask3(10)+"\n")
-        ;
-        System.out.println(stringBuilder);
+        StringBuilder sbResultOptionTask3 = optionTask3(10);
+        System.out.println("OptionTask3: " + sbResultOptionTask3 + "\n");
+
     }
 
     public static int task1(int num) {
@@ -192,7 +206,7 @@ public class HomeWork {
     }
 
     public static int[] generetaArr(int maxSize, int maxEl) {
-        int[] arr = new int[3 + new Random().nextInt(maxSize - 1)];
+        int[] arr = new int[3 + new Random().nextInt(maxSize - 3)];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = 1 + new Random().nextInt(maxEl);
         }
@@ -277,7 +291,7 @@ public class HomeWork {
         String str = sc.nextLine();
         System.out.println("Enter word. Length must more one character. ");
         String key = sc.nextLine();
-        if (key.length()<=1) return "Word must more one character. Good luck next time.\n";
+        if (key.length() <= 1) return "Word must have more one character. Good luck next time.";
         return "Werb [" + key + "] meets in this positions " + task5_1(str, key);
     }
 

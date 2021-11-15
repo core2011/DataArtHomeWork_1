@@ -20,7 +20,7 @@ public class HomeWork {
 
 
         StringBuilder resultTask2_1 = task2_1(new int[1 + new Random().nextInt(30)]);
-        System.out.println("Task2: " + resultTask2_1 + "\n");
+        System.out.println("Task2_1: " + resultTask2_1 + "\n");
 
 
         int[] arrTask3 = new int[]{2, 4, 8};
@@ -249,11 +249,22 @@ public class HomeWork {
         return sb.append(Arrays.toString(arr));
     }
 
+    public static String checkStr(String str) {
+        char[] chStr = str.toUpperCase().toCharArray();
+        for (int i = 0; i < chStr.length; i++) {
+            if (chStr[i] == '.' || chStr[i] == '!' || chStr[i] == ',') {
+                chStr[i] = ' ';
+            }
+        }
+        return new String(chStr);
+    }
+
     public static int task5(String str, String key) {
-        String[] strList = str.split(" ");
         int count = 0;
+        String newStr = checkStr(str);
+        String[] strList = newStr.split(" ");
         for (int i = 0; i < strList.length; i++) {
-            if (strList[i].toUpperCase().contains(key.toUpperCase())) {
+            if (strList[i].toUpperCase().equals(key.toUpperCase())) {
                 count++;
             }
         }
@@ -264,23 +275,17 @@ public class HomeWork {
         int size = task5(str, key);
         int arr[] = new int[size];
         int positiontArr = 0;
-        char[] chStr = str.toUpperCase().toCharArray();
+        String newStr = checkStr(str);
+        String[] listStr = newStr.split(" ");
         char[] chKey = key.toUpperCase().toCharArray();
         int lengthKeyWord = chKey.length;
-        for (int i = 0; i < chStr.length; i++) {
-            int count = 0;
-            if (chStr[i] == chKey[0]) {
-                for (int j = 0; j < chKey.length; j++) {
-                    if (chStr[i + j] == chKey[j]) {
-                        count++;
-                    }
-                    if (count == lengthKeyWord) {
-                        arr[positiontArr] = i;
-                        positiontArr++;
-                    }
-                }
+        int countChar = 0;
+        for (int y = 0; y < listStr.length; y++) {
+            if (listStr[y].toUpperCase().equals(key.toUpperCase())) {
+                arr[positiontArr] = countChar;
+                positiontArr++;
             }
-
+            countChar += listStr[y].length() + 1;
         }
         return Arrays.toString(arr);
     }
